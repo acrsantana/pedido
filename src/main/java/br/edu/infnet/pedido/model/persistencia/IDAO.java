@@ -6,14 +6,14 @@ import br.edu.infnet.pedido.model.entidade.Cliente;
 
 public interface IDAO<T> {
 
-	Boolean salvar(T obj);
+    Boolean salvar(T obj);
 
-	Boolean atualizar(T obj);
+    Boolean atualizar(T obj);
 
-	Boolean deletar(T obj);
+    Boolean deletar(T obj);
 
-	Cliente obter(Long codigo);
+    T obter(Long codigo);
 
-	List<T> listarTodos();
+    List<T> listarTodos();
 
 }

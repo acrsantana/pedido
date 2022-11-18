@@ -9,14 +9,14 @@ import br.edu.infnet.pedido.model.JdbcUtil;
 
 public abstract class JdbcDAO<T> implements IDAO<T> {
 
-	protected Connection con;
-	protected PreparedStatement pstm;
-	protected Statement stm;
-	protected ResultSet rs;
+    protected Connection con;
+    protected PreparedStatement pstm;
+    protected Statement stm;
+    protected ResultSet rs;
 
-	public JdbcDAO() {
-		super();
-		con = JdbcUtil.obterConexao();
-	}
+    public JdbcDAO() {
+        super();
+        con = JdbcUtil.obterConexao();
+    }
 
 }

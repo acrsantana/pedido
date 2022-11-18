@@ -5,61 +5,58 @@ import java.util.List;
 
 public class Pedido {
 
-	private Long numero;
-	
-	private LocalDate data;
-	
-	private Cliente cliente;
-	
-	private List<Produto> produtos;
+    private Long numero;
 
-	public Pedido() {
-	}
-	
-	public Pedido(Long numero, LocalDate data, Cliente cliente) {
-		super();
-		this.numero = numero;
-		this.data = data;
-		this.cliente = cliente;
-	}
+    private LocalDate data;
 
+    private Cliente cliente;
 
-	public Long getNumero() {
-		return numero;
-	}
+    private List<Produto> produtos;
 
-	public void setNumero(Long numero) {
-		this.numero = numero;
-	}
+    public Pedido() {
+    }
 
-	public LocalDate getData() {
-		return data;
-	}
+    public Pedido(Long numero, LocalDate data, Cliente cliente) {
+        super();
+        this.numero = numero;
+        this.data = data;
+        this.cliente = cliente;
+    }
 
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
+    public Long getNumero() {
+        return numero;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public LocalDate getData() {
+        return data;
+    }
 
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	@Override
-	public String toString() {
-		return "Pedido [numero=" + numero + ", data=" + data + ", cliente=" + cliente + ", produtos=" + produtos + "]";
-	}
-	
-	
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    @Override public String toString() {
+        return "Pedido [numero=" + numero + ", data=" + data + ", cliente=" + cliente + ", produtos=" + produtos + "]";
+    }
+
 }

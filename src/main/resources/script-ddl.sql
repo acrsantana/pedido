@@ -1,54 +1,78 @@
-
-
-create database app;
-
-use app;
-
-create table cliente(
-	codigo int not null primary key auto_increment,
-	nome varchar(80)
+create table cliente
+(
+    codigo serial not null primary key,
+    nome   varchar(80)
 );
 
-select * from cliente;
+insert into cliente (nome)
+values ('Cezar Vilela');
+insert into cliente (nome)
+values ('Joice Camara');
+insert into cliente (nome)
+values ('Luna Carvalho');
+insert into cliente (nome)
+values ('Artur Ribeiro');
+insert into cliente (nome)
+values ('Carlos Castro');
 
-create table produto(
-	codigo int not null primary key auto_increment,
-	descricao varchar(120),
-	preco double
+select *
+from cliente;
+
+create table produto
+(
+    codigo    serial not null primary key,
+    descricao varchar(120),
+    preco     decimal
 );
 
-insert into produto (codigo,  descricao, preco) values (null, 'Macarrão a bolonheza', 100);
-insert into produto (codigo,  descricao, preco) values (null, 'Bife com fritas', 200);
-insert into produto (codigo,  descricao, preco) values (null, 'Coca-cola', 8);
+insert into produto (descricao, preco)
+values ('Macarrão a bolonheza', 100);
+insert into produto (descricao, preco)
+values ('Bife com fritas', 200);
+insert into produto (descricao, preco)
+values ('Coca-cola', 8);
 
-create table pedido (
-	codigo int not null primary key auto_increment,
-	data date,
-	cliente_cod int,
-	foreign key (cliente_cod) references cliente(codigo)
+select *
+from produto;
+
+create table pedido
+(
+    codigo      serial not null primary key,
+    data        date,
+    cliente_cod int,
+    foreign key (cliente_cod) references cliente (codigo)
 );
 
-
-create table itens_pedido (
-	codigo int not null primary key auto_increment,
-	pedido_cod int,
-	produto_cod int,
-	foreign key (pedido_cod) references pedido(codigo),
-	foreign key (produto_cod) references produto(codigo)
+create table itens_pedido
+(
+    codigo      serial not null primary key,
+    pedido_cod  int,
+    produto_cod int,
+    foreign key (pedido_cod) references pedido (codigo),
+    foreign key (produto_cod) references produto (codigo)
 );
 
-insert into pedido (codigo, data, cliente_cod) values (null, '2022-10-22', 4);
+insert into pedido (data, cliente_cod)
+values ('2022-10-22', 4);
 
+select *
+from pedido;
 
-insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 1);
-insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 2);
-insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 3);
+insert into itens_pedido (pedido_cod, produto_cod)
+values (2, 1);
+insert into itens_pedido (pedido_cod, produto_cod)
+values (2, 2);
+insert into itens_pedido (pedido_cod, produto_cod)
+values (2, 3);
 
+select *
+from itens_pedido;
 
-select p.codigo, p.data, c.nome, pr.descricao, pr.preco from pedido p 
-	join cliente c
-	join itens_pedido i
-	join produto pr
-	on p.cliente_cod = c.codigo
-	and p.codigo = i.pedido_cod
-	and pr.codigo = i.produto_cod;
+select c.nome, p.data, pr.descricao, pr.preco
+from pedido p,
+     cliente c,
+     itens_pedido ip,
+     produto pr
+where p.cliente_cod = c.codigo
+  and ip.pedido_cod = p.codigo
+  and ip.produto_cod = pr.codigo;
